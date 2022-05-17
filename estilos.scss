@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Francois+One&display=swap');
+
+//fonts
+
+$font1: 'Koulen', cursive;
+$font2:'Secular one', sans-serif;
+$font3:'Francois one', sans-serif;
+
+h2{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 3em;
+    font-family: $font1 ;
+    color: chocolate;
+    text-shadow: 5px 5px 10px black;
+    letter-spacing: 0.2em;
+}
+
+//sass nos permite la incorporacion sencilla de operaciones matematiccas
+//operadores - inicio
+
+//Distintas variables posibles:
+
+$ancho: 720px;
+$alto:200px;
+
+$var1:100%;
+$var2:50%;
+
+$blue:darkblue;
+$green:#0f9243;
+$red:darkred;
+$black:black;
+$white:rgb(10,5,5);
+
+$xs:16px;
+$small:20px;
+$med:40px;
+$large:60px;
+$xl:80px;
+
+// Paleta de colores:
+
+$color1:orange;
+$color2:blue;
+$color3:red;
+$color4:yellow;
+$color5:pink;
+
+// Dimensiones:
+$size1:100%;
+$size2:50%;
+$size3:20px;
+$size4:50px;
+$size5:100px;
+
+// Fonts
+
+$font4:cursive;
+$font4:cursive;
+$font4:cursive;
+$font4:cursive;
+
+
+.box__uno{
+    background-color: $blue;
+    // Calculo
+    width: ($var1) - ($var2); // Resta 
+    // Resultado: Ancho de 50%
+    
+    /*Calculo*/
+    height: $alto*2; /* Multiplicacion */
+    // Resultado: Alto de 400px 
+    
+    
+}
+
+.box__dos{
+    background-color: $green;
+    width: ($ancho/2)-250;
+    // Resultado: Ancho de 110px
+    height: $alto+450;
+    //Resultado: Alto 650px
+
+}
+
+
+$size: 150px;
+
+.titulo {
+    font-size: ($size/2)-40;
+    //  math.div ($size, 2);
+    color: red;
+    text-align: center;
+    font-family: $font2;
+}
+
+// Operadores - Fin
+
+//los condicionales permiten establecer reflas para validar si se aplica o no una accion,
+//cambio o asignacion en el atributo de un elemento.
+//Estas Condiciones podran incluir comparadores tipicos (==, !=, <, >)
+
+// === igual (tener en cuenta el tipo de dato)
+
+// == igual
+// != Distinto
+// < menor
+// > mayor 
+// <= Menor o Igual
+// >= Mayor o Igual
+
+// Concidionales - Inicio:
+
+p {
+    height: $alto;
+    width: $ancho;
+    background-color: $red;
+    font-size: $large;
+    text-align: center;
+}
+
+$animal: 15;
+
+// Constante = Variable que va a tener siempre fijo el valor.
+
+// @if = se indica el tipo de condicion a cumplir
+
+p {
+    @if $animal != 15 {
+        color: tomato;
+        background-color: turquoise;
+        border: 2px solid #333;
+    }
+
+    @else if $animal == perro {
+        color: yellow;
+
+    }
+
+    @else if $animal == caballo {
+        color: green;
+    }
+    
+    @else {
+        color: coral;
+        background-color: #333;
+        border: 12px solid turquoise;
+    }
+}
+
+
+// Otro ejemplo de condicional
+
+.cont1 { 
+    height: 400px;
+    width: 700px;
+}
+
+$img1: egret;
+$img2: puma;
+$img3: sea-slug;
+$img4: otro;
+$animal: $img4;
+
+/* Mi Constante */
+
+.cont1 {
+    @if $animal == egret {
+        color: orange;
+        background-image: url("img/egret.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+
+    @else if $animal == $img2 {
+        color: red;
+        background-color: yellow;
+        background-image: url("img/puma.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+
+    @else if $animal == sea-slug{
+        color: green;
+        background-image:url("img/sea-slug.jpg") ;
+        background-position: center;
+        background-size:cover ;
+    }
+
+    @else {
+        color: coral;
+        background-color: #333;
+    }
+}
+
+// Condicionales - fin 
+
+// Un bucle es una secuencia que se repite mas de una vez. 
+// Cuando la misma deja de cumplirse, el bucle finaliza.
+
+// Bucle - Inicio
+
+.para{
+    height: 200px;
+    background-color: yellow;
+    border: 2px solid #333;
+}
+
+// .casitodos-3 
+
+// @for para declarar BUCLES --> Ciclo de repeticiones, donde se van reproduciendo continuamente, en este caso, variables.
+
+//  La variable en este ejemplo va a tener los datos de "From" y "Through" que indican el inicio y el fin del bucle respectivamente.
+
+@for $i from 1 through 4 {
+    .casitodos-#{$i} {  // .casitodos-#{$i} = Concatenacion 
+    width: 4em * $i;
+    background-color: #0f9243;
+    border-width: 5px * $i;
+    border-color: #f00;
+    border-style:dashed ;
+    //font-size: 2em * $i;
+    //font-size: 30px * $i;
+    //font-size: 20px * $i;
+    }
+}
+
+// Otro ejemplo de bucle @for
+
+@for $in from 1 through 5{
+    
+    .bucle-#{$in}{
+        width: 400px;
+        height: 200px;
+        background-color: purple;
+        border: 2px solid #333;
+        text-align: center;
+        font-size: 50px;
+    }
+}
+
+$base-color: #036;
+//$base-color: #3ff;
+
+@for $in from 1 through 5{
+    .bucle-#{$in}{
+        background-color: lighten($base-color, $in * 10%);
+        //background-color: darken($base-color, $in * 10%);
+    }
+}
+
+// Bucles - Fin. 
+
+
+// each - Inicio.
+
+
+
+.puma-icon, .egret-icon, .sea-slug-icon{
+    height: 250px;
+    width: 400px;
+    border: 2px solid #333;
+}
+
+@each $animal in puma, egret , sea-slug {
+    .#{$animal}-icon{
+        //background-image:url("img/puma.jpg");
+        background-image: url("img/#{$animal}.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+// Otro ejemplo del uso del @each
+
+$colores: red,
+blue,
+black,
+orange,
+violet;
+
+@each $color in $colores {
+    .color-#{$color} {
+        border-color: $color ;
+        color: $color;
+        background-color: $color;
+        font-size: 50px;
+        text-shadow: 5px 5px 5px #fff;
+        border: 2px solid;
+        height: 200px;
+        width: 600px;
+    }
+}
+
+
+// Each - Fin. 
+
+$redes: (
+    /* Declaramos nuestro mapa*/
+    red1: 20px,
+    red2: 40px,
+    red3: 60px,
+); 
+
+/* Creamos el bucle para usar los valores del mapa*/
+
+@each $red, $size in $redes {
+    .btn--#{$red} {
+    background-color:rgb(0, 0, 0);
+    height: 200px;
+    width: 500px;
+    border: 2px solid #111;
+    text-align:center;
+    font-size: $size;
+    line-height: 200px;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px orange;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    border-radius:10px;
+    }
+}
+
+// maps - fin
+
+// con los extends vamos a agregar los estilos de otra clase
+// Extends - @inicio
+
+.redsocial{
+    border:3px solid #f00;
+    background-color: orangered;
+    height: 300px;
+    width:600px;
+    padding:20px;
+}
+
+.redsocial--nueva{
+    @extend .redsocial;
+    color: #fff;
+    font-size:$large;
+}
+
+@mixin sizes ($height, $width, $bcolor){
+    height: $height;
+    width: $width;
+    background-color: $bcolor;
+}
+
+.box {
+    @include sizes (400px, 100%, orange)
+}
